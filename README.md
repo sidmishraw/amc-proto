@@ -1,2 +1,2 @@
-# A protoype webapplication of theatre task management
+# A protoype webapplication for theatre task management
 ### WIP
