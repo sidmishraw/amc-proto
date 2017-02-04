@@ -1,3 +1,6 @@
 ivysaur/*
 __pycache__/*
 *.pyc
+.idea/
+project_amc_theatre.sublime-project
+project_amc_theatre.sublime-workspace
