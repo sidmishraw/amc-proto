@@ -3,7 +3,7 @@
 # @Author: sidmishraw
 # @Date:   2017-01-21 00:22:26
 # @Last Modified by:   Sidharth Mishra
-# @Last Modified time: 2017-02-27 22:10:09
+# @Last Modified time: 2017-02-27 23:06:03
 
 
 # flask related imports
@@ -22,7 +22,7 @@ from flask import jsonify
 from core import service
 
 # python standard library imports
-import os
+from os import environ
 from json import dumps
 
 
@@ -154,5 +154,9 @@ def mark_task_complete():
 
 if __name__ == '__main__':
 
-  app.run(debug=True)
+  # Bind to PORT if defined, otherwise default to 5000.
+  port = int(environ.get('PORT', 5000))
+  app.run(host='0.0.0.0', port=port)
+  # debug mode on for local development
+  # app.run(debug=True)
 
