@@ -3,7 +3,8 @@
 # @Author: Sidharth Mishra
 # @Date:   2017-01-21 00:40:06
 # @Last Modified by:   Sidharth Mishra
-# @Last Modified time: 2017-02-27 19:42:35
+# @Last Modified time: 2017-02-27 21:25:56
+
 
 
 '''
@@ -47,7 +48,7 @@ class Employee(object):
   The employee - a role played by the person.
   '''
 
-  def __init__(self, name, emailId, password, manager=None):
+  def __init__(self, name, emailId, password, manager=None, reportees=None):
     '''
     Initializes the Employee object for the given employeeID, name and emailId.
     '''
@@ -56,6 +57,19 @@ class Employee(object):
     self.emailId = emailId
     self.password = password
     self.manager = manager
+    self.reportees = reportees
+
+
+
+  def __repr__(self):
+    '''
+    repr for Employee
+
+    :return: str
+    '''
+
+    return '{} - {} - manager : {} - reportees : {}'.format(self.name, \
+      self.emailId, self.manager, self.reportees)
 
 
 # class ManagementPolicy:
@@ -117,6 +131,5 @@ class Task(object):
       is_complete = dumps(self.is_complete),\
       task_setter = dumps(self.task_setter),\
       assigned_to = dumps(self.assigned_to))
-
 
 

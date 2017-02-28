@@ -3,7 +3,8 @@
 # @Author: Sidharth Mishra
 # @Date:   2017-02-23 11:09:34
 # @Last Modified by:   Sidharth Mishra
-# @Last Modified time: 2017-02-27 21:08:39
+# @Last Modified time: 2017-02-27 21:33:05
+
 
 # app specific imports
 from core.bo import Task
@@ -16,6 +17,7 @@ from json import loads
 from json import JSONDecoder
 from json import JSONEncoder
 from datetime import datetime
+
 
 # for generating random unique ids for the tasks
 from uuid import uuid4
@@ -38,12 +40,14 @@ def check_login_credentials(username, password):
   :return: True or False
   '''
 
-  global user_dict
+  global user_dict, employees
 
-  if username not in user_dict or user_dict[username] != password:
+  if username not in employees or employees[username].password != password:
+
     return False
   else:
     return True
+
 
 
 
@@ -86,8 +90,6 @@ def get_all_created_tasks(task_owner):
 
   :return: list(str(Task)) - where list is the list of json strings for Task obj
   '''
-
-  from pdb import set_trace
 
   global tasks_dict
 
@@ -146,4 +148,5 @@ def mark_task_complete(taskId):
   print(tasks_dict)
 
   return str(tasks_dict[taskId])
+
 

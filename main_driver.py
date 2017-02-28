@@ -3,12 +3,13 @@
 # @Author: sidmishraw
 # @Date:   2017-01-21 00:22:26
 # @Last Modified by:   Sidharth Mishra
-# @Last Modified time: 2017-02-27 21:18:02
+# @Last Modified time: 2017-02-27 21:40:36
 
 
 # flask related imports
 from flask import Flask
 from flask import request
+from flask import Response
 from flask import render_template
 from flask import url_for
 from flask import abort
@@ -26,7 +27,9 @@ from json import dumps
 
 
 
-# THE FLASK APP
+
+
+# the flask application
 app = Flask(__name__)
 
 
@@ -36,7 +39,7 @@ app = Flask(__name__)
 @app.route('/')
 def root():
   'The root of the server, just return the index.html'
-  return render_template('index.html', is_manager = True)
+  return render_template('index.html')
 
 @app.route('/manager')
 def root_manager():
@@ -89,7 +92,6 @@ def create_task():
     setter_email_address = 'manager@amc.com')
 
   return 'True'
-
 
 
 
@@ -150,7 +152,7 @@ def mark_task_complete():
 
 
 
-
 if __name__ == '__main__':
 
   app.run(debug=True)
+
