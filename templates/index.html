@@ -1,13 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-      <div>
-        <p>
-          Hey there!
-        </p>
-      </div>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webflow.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var user = "{{ is_manager }}" === "True" ? true : false
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+
+<body class="body">
+    <div class="bars-wrapper w-clearfix">
+        <div class="bar"></div>
+        <div class="_2 bar"></div>
+        <div class="_3 bar"></div>
+        <div class="_4 bar"></div>
+        <div class="_5 bar"></div>
+        <div class="_6 bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="header-section">
+        <div class="siteheading w-container">
+            <h1><span class="stanfordtext">STANFORD</span> <span class="header14">14</span> <span class="headertasker">TASKER</span></h1><img class="amclogo" height="75" id="amc_logo" sizes="75px" src="{{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }}" srcset="{{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }} 500w, {{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }} 800w, {{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }} 1080w, {{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }} 1600w, {{ url_for('static', filename='images/Amc_theatres_logo.svg.png') }} 2000w" width="75">
+        </div>
+        {% if is_manager %}
+        <div class="container w-container">
+            <div class="w-form">
+                <form class="taskcreationform w-clearfix" id="email-form" name="email-form">
+                    <label class="taskcreationlabel" for="name">Task Name:</label>
+                    <input class="taskcreationinput w-input" id="task_name" maxlength="256" name="task_name" placeholder="Enter task name" type="text" required="required">
+                    <label class="taskcreationlabel" for="Field-2">Recipient Email Address:</label>
+                    <input class="taskcreationinput w-input" id="recipient_email_address" maxlength="256" name="recipient_email_address" placeholder="Enter recipient email address" required="required" type="text">
+                    <label class="taskcreationlabel" for="taskDescription">Task Description:</label>
+                    <textarea class="w-input" id="task_description" maxlength="5000" name="task_description" placeholder="Enter task description" required="required"></textarea>
+                    <input class="amcbutton w-button" data-wait="Please wait..." type="button" value="Create Task">
+                </form>
+                <div class="w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div class="w-form-fail">
+                    <div>Oops! Something went wrong while submitting the form</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-container">
+            <h1><span class="taskscreatedheading">TASKS CREATED</span><br></h1>
+            <ul class="tasksassignedlist w-list-unstyled" id="tasksAssigned">
+                <!-- <li class="wf-selected">
+                    <div class="w-form">
+                        <div id="task_listing_li" class="w-clearfix taskcreatedli">
+                            <label class="tasknameli" for="name-2">Task Name</label>
+                            <label class="taskcreationdateli">TaskCreationDate</label>
+                            <label class="taskcompletiondateli">taskCompletionDate</label>
+                            <label class="taskassignedtoli">Assigned To</label>
+                            <label class="taskdescriptionli" for="email">Task Description</label>
+                            <div class="w-checkbox taskcompletionbox">
+                                <input class="w-checkbox-input" id="mark_as_complete" name="mark_as_complete" type="checkbox">
+                                <label class="w-form-label" for="checkbox">Mark As Completed</label>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+        {% endif %}
+        <div class="w-container">
+            <h1><span class="taskscreatedheading">MY TASKS</span></h1>
+            <ul class="tasksassignedlist w-list-unstyled" id="myTaskList">
+                <!-- <li class="wf-selected">
+                    <div class="w-form">
+                        <div id="task_listing_li" class="w-clearfix taskcreatedli">
+                            <label class="tasknameli" for="name-2">Task Name</label>
+                            <label class="taskcreationdateli">TaskCreationDate</label>
+                            <label class="taskcompletiondateli">taskCompletionDate</label>
+                            <label class="taskassignedtoli">Assigned To</label>
+                            <label class="taskdescriptionli" for="email">Task Description</label>
+                            <div class="w-checkbox taskcompletionbox">
+                                <input class="w-checkbox-input" id="mark_as_complete" name="mark_as_complete" type="checkbox">
+                                <label class="w-form-label" for="checkbox">Mark As Completed</label>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="footer-section">
+        <div class="w-container">
+            <div class="w-row">
+                <div class="w-col w-col-6 w-col-small-6">
+                    <div class="copyright">© 2017 AMC App. All right reserved.&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
